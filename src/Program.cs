@@ -70,6 +70,7 @@ static double GetMedian(double[] numbers)
 }
 File.WriteAllText("analysis_report.txt", report);
 Console.WriteLine("Analysis results have been saved in analysis_report.txt");
+
 catch (Exception ex)
 {
     Console.WriteLine("Error processing the file: " + ex.Message);
