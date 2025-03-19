@@ -68,3 +68,5 @@ static double GetMedian(double[] numbers)
     int size = numbers.Length;
     return size % 2 == 0 ? (numbers[size / 2 - 1] + numbers[size / 2]) / 2 : numbers[size / 2];
 }
+File.WriteAllText("analysis_report.txt", report);
+Console.WriteLine("Analysis results have been saved in analysis_report.txt");
