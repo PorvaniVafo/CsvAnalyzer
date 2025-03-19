@@ -20,3 +20,25 @@ class Program
 Console.WriteLine("Enter the delimiter (default is ','):");
 string separator = Console.ReadLine();
 if (string.IsNullOrWhiteSpace(separator)) separator = ",";
+
+static List<double[]> ReadCsv(string path, string separator)
+{
+    List<double[]> data = new List<double[]>();
+    string[] lines = File.ReadAllLines(path);
+
+    foreach (string line in lines.Skip(1)) // Skip header
+    {
+        try
+        {
+            double[] values = line.Split(separator)
+                                  .Select(v => double.Parse(v.Trim()))
+                                  .ToArray();
+            data.Add(values);
+        }
+        catch
+        {
+            Console.WriteLine("Error processing line (possibly non-numeric values): " + line);
+        }
+    }
+    return data;
+}
