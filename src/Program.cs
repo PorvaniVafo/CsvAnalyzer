@@ -42,3 +42,23 @@ static List<double[]> ReadCsv(string path, string separator)
     }
     return data;
 }
+static string AnalyzeData(List<double[]> data)
+{
+    Console.WriteLine("\nCSV File Analysis Results:");
+    int columnCount = data[0].Length;
+    string report = "";
+
+    for (int i = 0; i < columnCount; i++)
+    {
+        var columnValues = data.Select(row => row[i]).ToArray();
+        double mean = columnValues.Average();
+        double min = columnValues.Min();
+        double max = columnValues.Max();
+        double median = GetMedian(columnValues);
+
+        string result = $"Column {i + 1}: Mean = {mean}, Min = {min}, Max = {max}, Median = {median}";
+        Console.WriteLine(result);
+        report += result + "\n";
+    }
+    return report;
+}
