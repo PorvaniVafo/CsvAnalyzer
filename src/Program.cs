@@ -62,3 +62,9 @@ static string AnalyzeData(List<double[]> data)
     }
     return report;
 }
+static double GetMedian(double[] numbers)
+{
+    Array.Sort(numbers);
+    int size = numbers.Length;
+    return size % 2 == 0 ? (numbers[size / 2 - 1] + numbers[size / 2]) / 2 : numbers[size / 2];
+}
